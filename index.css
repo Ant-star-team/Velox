@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* PIXZIE Dark Luminous Theme */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 158 64% 52%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 45 93% 47%;
+    --secondary-foreground: 0 0% 4%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 0 72% 37%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 37%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 158 64% 52%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior-y: none;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+@layer components {
+  /* Glass Card */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+  }
+
+  /* Elevated Glass */
+  .glass-elevated {
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Glowing Glass (emerald) */
+  .glass-glow {
+    background: rgba(52, 211, 153, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(52, 211, 153, 0.1);
+  }
+
+  /* Gold Glass */
+  .glass-gold {
+    background: rgba(251, 191, 36, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(251, 191, 36, 0.1);
+  }
+
+  /* Shadow utilities */
+  .shadow-emerald {
+    box-shadow: 0 0 20px rgba(52, 211, 153, 0.3), 0 0 60px rgba(52, 211, 153, 0.1);
+  }
+
+  .shadow-gold {
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.3), 0 0 60px rgba(251, 191, 36, 0.1);
+  }
+
+  .shadow-maroon {
+    box-shadow: 0 0 20px rgba(153, 27, 27, 0.3), 0 0 60px rgba(153, 27, 27, 0.1);
+  }
+
+  /* Pet mood animations */
+  @keyframes pet-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes pet-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+  }
+  @keyframes pet-sleep {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+    50% { transform: translateY(2px) scale(0.98); opacity: 0.8; }
+  }
+  @keyframes pet-spin {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+  }
+  @keyframes pet-sway {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+  @keyframes pet-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes pet-grumpy {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  .animate-pet-happy { animation: pet-bounce 1.2s ease-in-out infinite; }
+  .animate-pet-sad { animation: pet-shake 2s ease-in-out infinite; }
+  .animate-pet-tired { animation: pet-sleep 3s ease-in-out infinite; }
+  .animate-pet-excited { animation: pet-spin 1.5s ease-in-out infinite; }
+  .animate-pet-relaxed { animation: pet-sway 2s ease-in-out infinite; }
+  .animate-pet-loved { animation: pet-float 2s ease-in-out infinite; }
+  .animate-pet-angry { animation: pet-grumpy 0.8s ease-in-out infinite; }
+
+  /* Floating animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .animate-float { animation: float 3s ease-in-out infinite; }
+
+  /* Gradient mesh background */
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .gradient-mesh {
+    background: linear-gradient(
+      -45deg,
+      rgba(52, 211, 153, 0.03),
+      rgba(251, 191, 36, 0.03),
+      rgba(153, 27, 27, 0.03),
+      rgba(59, 130, 246, 0.03)
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
+  /* Glow text */
+  .text-glow-emerald {
+    text-shadow: 0 0 20px rgba(52, 211, 153, 0.5);
+  }
+  .text-glow-gold {
+    text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+  }
+  .text-glow-maroon {
+    text-shadow: 0 0 20px rgba(153, 27, 27, 0.5);
+  }
+
+  /* Shimmer effect */
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(251, 191, 36, 0.1) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  /* Story ring rotation */
+  @keyframes story-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .story-ring {
+    background: conic-gradient(from 0deg, #34D399, #FBBF24, #34D399);
+    animation: story-spin 3s linear infinite;
+  }
+
+  /* Pulse ring */
+  @keyframes pulse-ring {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+  .pulse-ring {
+    animation: pulse-ring 2s ease-out infinite;
+  }
+
+  /* Safe area padding for mobile */
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .safe-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+}
